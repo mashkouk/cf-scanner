@@ -1,36 +1,69 @@
 {
 	"Hostname": "cp.cloudflare.com",
+	"Ports": [],
 	"Path": "/",
 	"Headers": {
-		"User-Agent": ["Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0)"],
-		"Accept-Encoding": ["gzip", "br"]
+		"User-Agent": ["Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0)"]
 	},
 	"ResponseHeader": {
 		"Server": "cloudflare"
 	},
-	"SNI": "cp.cloudflare.com",
-	"Insecure": false,
-	"Utls": {
-		"Enable": true,
-		"Fingerprint": "firefox"
-	},
-	"Scheme": "https",
+	"ResponseStatusCode": [200, 204],
 	"Ping": true,
-	"MaxPing": 200,
-	"Goroutines": 2,
+	"MaxPing": 300,
+	"Goroutines": 8,
 	"Scans": 6000,
 	"Maxlatency": 1000,
 	"Jitter": true,
 	"MaxJitter": 20,
-	"JitterInterval": 200,
-	"Alpn": ["http/1.1"],
+	"JitterInterval": 50,
 	"IpVersion": "v4",
 	"IplistPath": "ipv4.txt",
-	"IgnoreRange": ["104", "172"],
+	"IgnoreRange": [],
+	"AllowRange": [],
+	"TLS": {
+		"Enable": true,
+		"SNI": "cp.cloudflare.com",
+		"Insecure": false,
+		"Alpn": ["h2", "http/1.1"],
+		"Utls": {
+			"Enable": true,
+			"Fingerprint": "firefox"
+		}
+	},
 	"HTTP/3": false,
-	"Method": "random",
-	"Upload": false,
-	"UploadSize": 65536,
+	"Noise": {
+		"Enable": false,
+		"Packet": "str://meow",
+		"Sleep": 500
+	},
+	"LinearScan": false,
+	"DomainScan": {
+		"Enable": false,
+		"DomainAsSNI": false,
+		"DomainAsHost": false,
+		"Shuffle": true,
+		"SkipIPV6": true,
+		"DomainListPath": "cloudfalare-domains.txt"
+	},
 	"Padding": true,
-	"PaddingSize": "50-500"
+	"PaddingSize": "1-500",
+	"CSV": false,
+	"DownloadTest": {
+		"Enable": false,
+		"SeparateConnection": false,
+		"Url": "https://speed.cloudflare.com/__down?bytes=10000000",
+		"SNI": "cp.cloudflare.com",
+		"TargetBytes": 5000000,
+		"Timeout": 5000
+	},
+	"UdpScan": {
+		"Enable": false,
+		"Packets": [
+			{
+				"payload": "base64://ATVweRyrGwyVXtU8NFbPgilDINuh2HUt4WbUdCQ/N8hbnFXND4SoNbP/JVfsOg+WcASDO5MKq9w8HWp0Azbb60kgSSaK+dc1CA0Jm1qbRRl+ukR/g68Ae7iYjR3tAXzBSU8HYLeMQ3rmx6yS7FF+bIfyXHZ5vSnbUlIDRM53Q5+YRcDoAAAAAAAAAAAAAAAAAAAAAA==",
+				"sleep": 0
+			}
+		]
+	}
 }
